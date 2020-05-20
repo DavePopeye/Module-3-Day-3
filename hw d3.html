@@ -444,8 +444,10 @@
   </footer>
 
   <script>
-      window.onload = funciton(){
-          
+      window.onload = function(){
+          fetch("http://www.splashbase.co/api/v1/images/search?query=music")
+          .then(response => response.json())
+          .then(picture => console.log(picture))
       }
 
   </script>
