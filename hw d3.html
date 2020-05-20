@@ -445,11 +445,20 @@
   </footer>
 
   <script>
+      var svgs = document.querySelectorAll('svg')
+
       window.onload = function(){
           fetch("http://www.splashbase.co/api/v1/images/search?query=music")
           .then(response => response.json())
-          .then(json => { 
-            let picture = document.querySelector()
+          .then(response => {
+            for(let [index, image] of response.images.entries()){
+              var imageTag = document.createElement('img')
+              imageTag.setAttribute('src', image.url)
+              let svg = svgs[index]
+              let parentNode = svg.parentNode
+              parentNode.insertBefore(imageTag , svg)
+              svg.remove()
+            }
           })
       }
 
